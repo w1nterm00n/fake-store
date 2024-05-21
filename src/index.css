@@ -7,3 +7,8 @@ a{
     text-decoration: none;
     color: #4C5866;
 }
+
+button {
+    border-radius: 0; 
+    box-shadow: none; 
+}
