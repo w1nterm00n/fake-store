@@ -5,7 +5,10 @@
     margin-bottom: 50px;
 }
 .shopItemWrapper > .itemImage{
-    margin-bottom: 15px;
+    margin: 0 auto;
+    height: 200px;
+    max-width: 220px;
+    width: max-content;
 }
 .shopItemWrapper > .itemName{
     font-size: 30px;
