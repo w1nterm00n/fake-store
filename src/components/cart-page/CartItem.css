@@ -1,0 +1,101 @@
+/* отключение дефолтных стрелок у инпута*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+/* отключение дефолтных стрелок у инпута*/
+
+
+.CartItemWrapper{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #DDDDDD;
+    padding-top: 10px;
+}
+.itemDescription{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.CartItemWrapper > span{
+    color: #4C5866;
+    font-size: 20px;
+}
+.CartItemWrapper > .itemDescription > span{
+    color: #4C5866;
+    font-size: 20px;
+}
+
+.CartItemWrapper > .itemDescription > .itemImage{
+    width: 100px;
+    height: 100px;
+}
+.itemControl{
+    display: flex;
+}
+
+.amountCounter{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+.amountCounter > button {
+    background-color: #D9D9D9;
+    border: none;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    color: #000000;
+    align-items: center;
+}
+.amountCounter > input {
+    max-width: 30px;
+    height: 30px;
+    padding-left: 8px;
+    border: 2px solid #D4DAFE;
+    font-size: 18px;
+}
+
+.priceAndDeleteBtn{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+.priceAndDeleteBtn > span {
+    color: #4C5866;
+    font-size: 20px;
+}
+.deleteBtn{
+    background: none;
+    border: none;
+}
+
+
+@media (max-width: 900px) {
+    .CartItemWrapper{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .itemDescription{
+        width: 100% !important;
+        justify-content: center;
+    }
+    .itemControl{
+        width: 100% !important;
+        justify-content: center;
+        gap: 50px;
+    }
+    .amountCounter{
+        justify-content: flex-end;
+        width: 50% !important;
+    }
+    .priceAndDeleteBtn{
+        width: 50% !important;
+    }
+}

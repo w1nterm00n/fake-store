@@ -1,0 +1,43 @@
+.cartWrapper{
+    min-height: 70vh;
+}
+
+.contentSections{
+    display: flex;
+    list-style-type: none;
+    margin-top: 150px;
+}
+
+.contentSections > li{
+    color: #4C5866;
+}
+
+.priceAndCheckout{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10vw;
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+.totalPriceDisplay{
+    color: #666666;
+    font-size: 40px;
+    font-weight: 600;
+    display: flex;
+    gap: 25px;
+}
+
+
+@media (max-width: 900px) {
+    .cartWrapper{
+        padding-top: 70px;
+    }
+    .contentSections{
+        display: none;
+    }
+    .priceAndCheckout{
+        display: flex;
+        flex-direction: column;
+    }
+}
