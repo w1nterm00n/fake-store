@@ -25,7 +25,7 @@ function Shop() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar page="shop"/>
 
       <div className='pageWrapper'>
         <div className='shopItemsContainer'>

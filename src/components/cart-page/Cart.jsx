@@ -10,7 +10,7 @@ function Cart() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar page="cart"/>
       <div className='cartWrapper pageWrapper'>
         <ul className='contentSections'>
           <li style={{ width: '50%' }}>Item</li>

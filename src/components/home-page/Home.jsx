@@ -41,7 +41,7 @@ function Home() {
 
   return (
     <>
-      <Navbar/>
+      <Navbar page="home"/>
 
     {/* mainDescription */}
       <div className='pageWrapper'>

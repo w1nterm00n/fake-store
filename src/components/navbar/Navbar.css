@@ -9,6 +9,12 @@ header{
     gap: 90px;
     align-items: center;
 }
+.navbarMenu > li > a{
+    font-size: 20px;
+}
+.colouredLink{
+    color: #7875FE;
+}
 .cardLi{
     display: flex;
     gap: 15px;
