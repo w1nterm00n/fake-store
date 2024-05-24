@@ -1,7 +1,8 @@
 import './ShopItem.css'
+import { Link } from "react-router-dom";
+import cart from '../../assets/cart.png';
 
-
-function ShopItem({ image, name, cathegory, description, price}) {
+function ShopItem({ image, name, cathegory, description, price, isAdded}) {
 
     return (
       <div className="shopItemWrapper">
@@ -11,11 +12,22 @@ function ShopItem({ image, name, cathegory, description, price}) {
         <p className='itemDescription'>{description}</p>
         <div className="itemPriceAndAmount">
             <span className="itemPrice">{price} $</span>
-            <span className='amountCounter'>
-                <button>-</button>
-                <input className="amountCounter" type="number" name="amount" value="1" min="1" max="20" step="1"></input>
-                <button>+</button>
-            </span>
+
+            {isAdded && (
+                <span className='amountCounter'>
+                    <button>-</button>
+                    <input className="amountCounter" type="number" name="amount" value="1" min="1" max="20" step="1"></input>
+                    <button>+</button>
+                </span>
+                )
+            }
+            {!isAdded && (
+                <button className='addToCart'>
+                    <Link to="#!">Add to cart</Link> 
+                    <img src={cart} alt="cart icon" />
+                </button>
+                )
+            }
         </div>
       </div>
     )
@@ -27,6 +39,7 @@ function ShopItem({ image, name, cathegory, description, price}) {
     cathegory: "no cathegory",
     description: "no description",
     price: "100",
+    isAdded: false,
   };
 
   export default ShopItem

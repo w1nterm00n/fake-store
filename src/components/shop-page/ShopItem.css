@@ -1,8 +1,8 @@
 .shopItemWrapper{
-    max-width: 350px; /* */
-    padding: 100px;
+    max-width: 250px; /* */
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
 }
 .shopItemWrapper > .itemImage{
     margin-bottom: 15px;
@@ -32,4 +32,39 @@
     font-size: 20px;
     color: #666666;
     font-weight: 600;
+}
+.shopItemWrapper > .itemPriceAndAmount > .addToCart{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: none;
+    border: none;
+}
+
+.shopItemWrapper > .itemPriceAndAmount > .addToCart > a{
+    color: #7875FE;
+    font-size: 20px;
+}
+
+
+
+@media (max-width: 700px) {
+    .shopItemWrapper{
+        max-width: 170px;
+    }
+    .shopItemWrapper > .itemName{
+        font-size: 24px;
+    }
+    .shopItemWrapper > .itemDescription{
+        font-size: 14px;
+    }
+    .shopItemWrapper > .itemPriceAndAmount > .itemPrice{
+        font-size: 15px;
+    }
+    .shopItemWrapper > .itemPriceAndAmount > .addToCart > a{
+        font-size: 15px;
+    }
+    .shopItemWrapper > .itemPriceAndAmount > .amountCounter{
+        width: 70% !important;
+    }
 }
