@@ -1,12 +1,14 @@
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
+import ShopItem from './ShopItem'
 
 function Shop() {
 
   return (
     <>
       <Navbar/>
-      <h1>shop page</h1>
+
+      <ShopItem/>
       <Footer/>
     </>
   )

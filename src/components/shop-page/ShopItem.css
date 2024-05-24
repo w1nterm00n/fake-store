@@ -1,0 +1,35 @@
+.shopItemWrapper{
+    max-width: 350px; /* */
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.shopItemWrapper > .itemImage{
+    margin-bottom: 15px;
+}
+.shopItemWrapper > .itemName{
+    font-size: 30px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+.shopItemWrapper > .itemCathegory{
+    color: #B5B5BD;
+    font-size: 14px;
+    margin-bottom: 15px;
+}   
+.shopItemWrapper > .itemDescription{
+    color: #85859B;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.shopItemWrapper > .itemPriceAndAmount{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shopItemWrapper > .itemPriceAndAmount > .itemPrice{
+    font-size: 20px;
+    color: #666666;
+    font-weight: 600;
+}

@@ -13,7 +13,7 @@ function Navbar() {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/shop">Shop</Link></li>
                 <li className="cardLi">
-                <Link to="/card">Card</Link>
+                <Link to="/cart">Cart</Link>
                     <div className="displayItemsAmount">2</div> 
                 </li>
             </ul>
