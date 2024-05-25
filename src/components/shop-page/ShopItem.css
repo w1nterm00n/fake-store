@@ -70,4 +70,8 @@
     .shopItemWrapper > .itemPriceAndAmount > .amountCounter{
         width: 70% !important;
     }
+    .shopItemWrapper > .itemImage{
+        /*height: 200px;*/
+        max-width: 150px;
+    }
 }

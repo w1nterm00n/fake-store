@@ -49,7 +49,7 @@ function Home() {
           <div className='sectionContent'>
             <h1>Durable. Practical. Everyday.</h1>
             <p className='description'>Our store offers a wide range of well-crafted, sensible  
-              clothing designed to fit your 
+              items designed to fit your 
               everyday needs without compromising on  quality or style.
             </p>
             <button className='blueButton'>
@@ -71,12 +71,12 @@ function Home() {
 
             <div className='whyChooseUsContent'>
               <h3 className='outline'>Why Choose us?</h3>
-              <p className='description'>We use only the finest materials to ensure our clothing is durable, 
-                comfortable, and built to last. Our clothing is 
-                designed with functionality in mind, offering practical solutions 
-                for everyday wear. Enjoy high-quality, sensible
-                clothing at prices that make sense. 
-                We  believe in offering great value without compromising on quality.
+              <p className='description'>
+              Explore our eclectic assortment of unique and random items. 
+              From quirky gadgets and novelty gifts to veryday essentials,
+               our random stuff section is full of surprises. 
+               Perfect for gift-giving or simply treating yourself,
+              you'll never know what hidden gems you might discover.
               </p>
             </div>
         </div>

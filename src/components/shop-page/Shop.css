@@ -7,7 +7,7 @@
     margin-top: 70px;
     margin-bottom: 120px;
 }
-.paginationButtons{
+/* .paginationButtons{
     display: flex;
     width: fit-content;
     margin: 0 auto 60px;
@@ -24,7 +24,7 @@
 .paginationButtons > button > .triangleContainer-left > .triangle-left{
     border: 15px solid transparent; 
     border-left: 20px solid #4C5866; 
-}
+} */
 
 
 .triangleContainer-right{
