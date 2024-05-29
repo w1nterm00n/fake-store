@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import cart from '../../assets/cart.png';
 import { useState, useEffect } from 'react';
 
-function ShopItem({ image, name, cathegory, description, price, isAdded}) {
+function ShopItem({ item, image, name, category, description, price, isAdded, addItemToCart}) {
 
   const [croppedDescription, setCroppedDescription] = useState("");
   const [isLong, setIsLong] = useState(false); //true if description is longer then 25 words
@@ -26,7 +26,7 @@ function ShopItem({ image, name, cathegory, description, price, isAdded}) {
         <div className="shopItemWrapper">
           <img className="itemImage" src={image} alt="" />
           <p className='itemName'>{name}</p>
-          <span className='itemCathegory'>{cathegory}</span>
+          <span className='itemCathegory'>{category}</span>
           {isLong && (
               <>
                 <a href='#!' className='itemDescription'>{croppedDescription}</a>
@@ -49,7 +49,8 @@ function ShopItem({ image, name, cathegory, description, price, isAdded}) {
                   )
               }
               {!isAdded && (
-                  <button className='addToCart'>
+                  <button className='addToCart' 
+                  onClick={() => addItemToCart(item)}>
                       <Link to="#!">Add to cart</Link> 
                       <img src={cart} alt="cart icon" />
                   </button>
@@ -60,7 +61,7 @@ function ShopItem({ image, name, cathegory, description, price, isAdded}) {
       )
     }
   
-    ShopItem.defaultProps = {  //значения по дефолту
+    ShopItem.defaultProps = {  //значения по дефолту (не применяются)
       image: "https://www.scotsman.com/webimg/b25lY21zOjJiN2Q1NjhlLWI5ZDMtNGM2ZS1iOTFjLTNkYjcwOTE3OGI0NzplNWFkZDUxYy0yZjNiLTRiM2QtOTRjMC04YjllN2VhY2U3Mzg=.jpg?crop=3:2,smart&width=640&quality=65&enable=upscale",
       name: "no name",
       cathegory: "no cathegory",

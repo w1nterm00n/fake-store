@@ -1,14 +1,22 @@
 import './Cart.css'
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CartItem from './CartItem'
 
 function Cart() {
 
   const [totalPrice, setTotalPrice] = useState(0);
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => { //getting items, which added in cart
+    let cartStorage = localStorage.getItem("cart");
+    let newCart = JSON.parse(cartStorage);
+    setCart(newCart[0].items);
+  }, []);
 
   return (
+    
     <>
       <Navbar page="cart"/>
       <div className='cartWrapper pageWrapper'>
@@ -18,8 +26,10 @@ function Cart() {
           <li style={{ width: '30%' }}>Price</li>
         </ul>
 
-        <CartItem/>
-        <CartItem/>
+        {cart.map((item) => {
+            return <CartItem key={item.id} name={item.title} image={item.image}
+            price={item.price} amount={0}/>;
+        })}
 
         <div className='priceAndCheckout'>
           <span className='totalPriceDisplay'>

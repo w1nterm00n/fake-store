@@ -22,18 +22,22 @@ function Shop() {
     .then((response) => response.json())
     .then(json=>{
       setItemsArray(json);
+      console.log(json);
     })
     .catch((error) => console.error(error));
   }, []);
 
+  // Scroll to top of the page, when currentPage is change
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, [currentPage]);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = itemsArray.slice(indexOfFirstPost, indexOfLastPost);
-  //массив эл-тов, которые отобразятся на этой стр
+  //currentPosts - is the array of elements, that will display on this page
 
   const handlePagination = (pageNumber) => {
-    console.log("yaay ", pageNumber);
     setCurrentPage(pageNumber);
   }
 

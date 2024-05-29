@@ -75,10 +75,7 @@ img {
 .featuredProductContent > h4{
     margin-bottom: 15px;
 }
-.featuredProductContent > .blueButton{
-    display: flex;
-    gap: 10px;
-}
+
 .cathegory {
     color: #B5B5BD;
     font-size: 14px;
@@ -87,7 +84,7 @@ img {
     max-width: 400px;
 }
 .featuredProduct > .imageWrapper{
-    align-self: self-end;
+    /* align-self: self-end; */
 }
 
 
@@ -139,6 +136,15 @@ img {
     .whyChooseUs{
         flex-direction: column;
     }
+    .featuredProduct{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .featuredProductContent{
+        width: 80vw;
+        padding-bottom: 50px;
+    }
     .whyChooseUsContent{
         width: 70vw;
     }
@@ -153,7 +159,6 @@ img {
         padding-bottom: 50px;
     }
     .featuredProduct{
-        flex-direction: column;
         padding-top: 50px;
     }
     .mainDescription > .imageWrapper{
@@ -173,10 +178,7 @@ img {
     .whyChooseUs{
         padding-bottom: 30px;
     }
-    .featuredProductContent{
-        width: 50vw;
-        padding-bottom: 50px;
-    }
+    
 }
 
 @media (max-width: 500px) {
@@ -185,9 +187,5 @@ img {
     }
     .whyChooseUs{
         padding-bottom: 30px;
-    }
-    .featuredProductContent{
-        width: 50vw;
-        padding-bottom: 50px;
     }
 }

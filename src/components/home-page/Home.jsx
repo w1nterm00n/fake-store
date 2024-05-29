@@ -1,7 +1,7 @@
 import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
-import tissue from '../../assets/tissue.png'
-import cotton from '../../assets/cotton.png'
+import storeImage from '../../assets/storeImage.jpg'
+import cartImage from '../../assets/cartImage32.png'
 import cart from '../../assets/cart.png'
 import './Home.css'
 import { Link } from "react-router-dom";
@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
     name: "Item name",
     category: "cathegory",
     description: "blah blah blah",
-    image: {cotton},
+    image: {storeImage},
   }
 
 
@@ -22,7 +22,7 @@ function Home() {
 
   //fetching item for featuredProduct section
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products/1", {
+    fetch("https://fakestoreapi.com/products/13", {
     mode: "cors",
   })
     .then((response) => response.json())
@@ -58,7 +58,7 @@ function Home() {
           </div>
 
           <div className='imageWrapper'>
-            <img src={tissue} alt="tissue image" />
+            <img src={storeImage} alt="store image" />
           </div>
         </section>
       </div>
@@ -66,7 +66,7 @@ function Home() {
       {/* whyChooseUs */}
         <div className='whyChooseUs pageWrapper'>
             <div className='imageWrapper'>
-              <img src={cotton} alt="cotton image" />
+              <img src={cartImage} alt="cotton image" />
             </div>
 
             <div className='whyChooseUsContent'>
@@ -89,10 +89,6 @@ function Home() {
             <h4 className='outline'>{item.name}</h4>
             <p className='cathegory'>{item.category}</p>
             <p className='description'>{item.description}</p>
-            <button className='blueButton'>
-              <Link to="#!">Add to cart</Link> 
-              <img src={cart} alt="cart icon" />
-            </button>
           </div>
 
 

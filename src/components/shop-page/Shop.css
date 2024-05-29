@@ -7,16 +7,24 @@
     margin-top: 70px;
     margin-bottom: 120px;
 }
-/* .paginationButtons{
+ .pagination{
     display: flex;
     width: fit-content;
     margin: 0 auto 60px;
     gap: 60px;
 }
-.paginationButtons > button{
+.pagination > button{
     border: none;
-    background: none;
+    background: #D9D9D9;
+    padding: 10px 15px;
+    font-size: 18px;
 }
+
+.pagination > .active{
+    background: #A0A0A0;
+}
+
+/*
 .paginationButtons > button > .triangleContainer-right > .triangle-right{
     border: 15px solid transparent; 
     border-right: 20px solid #4C5866; 
