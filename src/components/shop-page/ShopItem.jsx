@@ -7,6 +7,7 @@ function ShopItem({ item, image, name, category, description, price, isAdded, ad
 
   const [croppedDescription, setCroppedDescription] = useState("");
   const [isLong, setIsLong] = useState(false); //true if description is longer then 25 words
+  const [isAddedToCart, setIsAdded] = useState(isAdded);
 
     useEffect(() => {
       function cropDescription(description) {
@@ -40,7 +41,7 @@ function ShopItem({ item, image, name, category, description, price, isAdded, ad
           <div className="itemPriceAndAmount">
               <span className="itemPrice">{price} $</span>
   
-              {isAdded && (
+              {isAddedToCart && (
                   <span className='amountCounter'>
                       <button>-</button>
                       <input className="amountCounter" type="number" name="amount" value="1" min="1" max="20" step="1"></input>
@@ -48,7 +49,7 @@ function ShopItem({ item, image, name, category, description, price, isAdded, ad
                   </span>
                   )
               }
-              {!isAdded && (
+              {!isAddedToCart && (
                   <button className='addToCart' 
                   onClick={() => addItemToCart(item)}>
                       <Link to="#!">Add to cart</Link> 

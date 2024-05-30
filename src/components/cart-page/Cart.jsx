@@ -1,5 +1,4 @@
 import './Cart.css'
-import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import { useState, useEffect } from 'react';
 import CartItem from './CartItem'
@@ -9,7 +8,7 @@ function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cart, setCart] = useState([]);
 
-  useEffect(() => { //getting items, which added in cart
+  useEffect(() => { //getting items, which added in cart, to display them
     let cartStorage = localStorage.getItem("cart");
     let newCart = JSON.parse(cartStorage);
     setCart(newCart[0].items);
@@ -18,7 +17,6 @@ function Cart() {
   return (
     
     <>
-      <Navbar page="cart"/>
       <div className='cartWrapper pageWrapper'>
         <ul className='contentSections'>
           <li style={{ width: '50%' }}>Item</li>

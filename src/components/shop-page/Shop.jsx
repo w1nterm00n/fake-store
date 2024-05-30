@@ -1,4 +1,3 @@
-import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import Pagination from './Pagination'
 // import ShopItem from './ShopItem'
@@ -44,8 +43,6 @@ function Shop() {
 
   return (
     <>
-      <Navbar page="shop"/>
-
       <div className='pageWrapper'>
         <div className='shopItemsContainer'>
           <Post itemsArray={currentPosts}/>

@@ -1,8 +1,11 @@
 import './Navbar.css'
 import logo from '../../assets/logo_light.svg'
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
 function Navbar({page}) {
+
+
     return (
       <>
       <div className="navbarWrapper">
@@ -16,15 +19,18 @@ function Navbar({page}) {
 
                 <li className="cardLi">
                   <Link to="/cart" className={page === "cart" ? "colouredLink" : ""}>Cart</Link>
-                  <div className="displayItemsAmount">2</div> 
+                  <div className="displayItemsAmount">0</div> 
                 </li>
 
             </ul>
         </header>
       </div>
+
+      <div>
+        <Outlet />
+      </div>
       </>
     )
   }
-  
   export default Navbar
 

@@ -1,8 +1,6 @@
-import Navbar from '../navbar/Navbar'
 import Footer from '../footer/Footer'
 import storeImage from '../../assets/storeImage.jpg'
 import cartImage from '../../assets/cartImage32.png'
-import cart from '../../assets/cart.png'
 import './Home.css'
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
@@ -41,8 +39,6 @@ function Home() {
 
   return (
     <>
-      <Navbar page="home"/>
-
     {/* mainDescription */}
       <div className='pageWrapper'>
         <section className='mainDescription'>
