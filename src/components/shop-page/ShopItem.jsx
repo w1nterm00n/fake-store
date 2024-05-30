@@ -1,10 +1,11 @@
 import './ShopItem.css'
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import cart from '../../assets/cart.png';
 import { useState, useEffect } from 'react';
 
 function ShopItem({ item, image, name, category, description, price, amount, addItemToCart}) {
 
+  const [, , changeAmount] = useOutletContext();
   const [croppedDescription, setCroppedDescription] = useState("");
   const [isLong, setIsLong] = useState(false); //true if description is longer then 25 words
   //const [isAddedToCart, setIsAdded] = useState(isAdded);
@@ -18,7 +19,6 @@ function ShopItem({ item, image, name, category, description, price, amount, add
           setIsLong(true);
         } 
       }
-  
       cropDescription(description);
     }, [description]);
   
@@ -43,9 +43,9 @@ function ShopItem({ item, image, name, category, description, price, amount, add
   
               {(amount > 0) && (
                   <span className='amountCounter'>
-                      <button>-</button>
-                      <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1"></input>
-                      <button>+</button>
+                      <button onClick={() => changeAmount(item, "-")}>-</button>
+                      <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1" readOnly></input>
+                      <button onClick={() => changeAmount(item, "+")}>+</button>
                   </span>
                   )
               }

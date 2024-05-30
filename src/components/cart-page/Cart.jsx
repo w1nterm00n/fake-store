@@ -7,15 +7,7 @@ import { useOutletContext } from 'react-router-dom';
 
 function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
-  const [cart, setCart] = useState([]);
   const [cartItems, setCartItems] = useOutletContext();
-
-
-  useEffect(() => {
-    //подсчитывать сумму из массива cartItems
-    //выводить её в totalPrice
-    console.log(cartItems);
-  }, [cartItems]);
 
 
   return (
@@ -29,7 +21,7 @@ function Cart() {
         </ul>
 
         {cartItems.map((item) => {
-            return <CartItem key={item.id} image={item.image} name={item.title} amount={item.amount} price={item.price}/>;
+            return <CartItem key={item.id} item={item} image={item.image} name={item.title} amount={item.amount} price={item.price}/>;
         })}
 
         <div className='priceAndCheckout'>

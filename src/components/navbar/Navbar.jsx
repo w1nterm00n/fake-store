@@ -8,6 +8,22 @@ function Navbar() {
   const [cartItems, setCartItems] = useState([]);
   const location = useLocation();
 
+  function changeAmount (item, operator) {  //when user pressing + or - buttons to increment/decrement
+    let newCartItems = cartItems.map(cartItem => {
+      if(cartItem.id == item.id) {
+        if (operator == "+") {
+          return { ...cartItem, amount: cartItem.amount + 1 };
+        } else if (operator == "-") {
+          return { ...cartItem, amount: cartItem.amount - 1 };
+        }
+      } else {
+          return cartItem;
+      }
+   });
+   setCartItems(newCartItems);
+  }
+
+
     return (
       <>
       <div className="navbarWrapper">
@@ -29,7 +45,7 @@ function Navbar() {
       </div>
 
       <div>
-        <Outlet context={[cartItems, setCartItems]}/>
+        <Outlet context={[cartItems, setCartItems, changeAmount]}/>
       </div>
       </>
     )

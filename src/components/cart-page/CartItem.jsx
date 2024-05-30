@@ -1,7 +1,10 @@
 import './CartItem.css'
 import trash from '../../assets/trash.png'
-function CartItem({ image, name, amount, price}) {
+import { useOutletContext } from "react-router-dom";
 
+function CartItem({ item, image, name, amount, price}) {
+
+  const [, , changeAmount] = useOutletContext();
   
   return (
     <div className='CartItemWrapper'>
@@ -13,9 +16,9 @@ function CartItem({ image, name, amount, price}) {
 
       <div className='itemControl' style={{ width: '50%' }}>
         <span className='amountCounter' style={{ width: '40%' }}>
-            <button>-</button>
-            <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1"></input>
-            <button>+</button>
+            <button onClick={() => changeAmount(item, "-")}>-</button>
+            <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1" readOnly></input>
+            <button onClick={() => changeAmount(item, "+")}>+</button>
         </span>
 
         <span className="priceAndDeleteBtn" style={{ width: '60%' }}>

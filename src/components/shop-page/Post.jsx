@@ -2,7 +2,6 @@ import ShopItem from './ShopItem';
 import { useOutletContext } from 'react-router-dom';
 
 
-
 const Post = ({ itemsArray }) => {
   const [cartItems, setCartItems] = useOutletContext();
 
