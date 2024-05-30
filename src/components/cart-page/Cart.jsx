@@ -10,6 +10,14 @@ function Cart() {
   const [cart, setCart] = useState([]);
   const [cartItems, setCartItems] = useOutletContext();
 
+
+  useEffect(() => {
+    //подсчитывать сумму из массива cartItems
+    //выводить её в totalPrice
+    console.log(cartItems);
+  }, [cartItems]);
+
+
   return (
     
     <>
@@ -21,7 +29,7 @@ function Cart() {
         </ul>
 
         {cartItems.map((item) => {
-            return <CartItem key={item.id} image={item.image} name={item.title} price={item.price}/>;
+            return <CartItem key={item.id} image={item.image} name={item.title} amount={item.amount} price={item.price}/>;
         })}
 
         <div className='priceAndCheckout'>

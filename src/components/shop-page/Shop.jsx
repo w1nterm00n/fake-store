@@ -19,8 +19,9 @@ function Shop() {
   })
     .then((response) => response.json())
     .then(json=>{
-      setItemsArray(json);
-      console.log(json);
+      let items = addAmountToObjects(json) //add "amount" prop to every item
+      setItemsArray(items);
+      console.log(items);
     })
     .catch((error) => console.error(error));
   }, []);
@@ -30,6 +31,19 @@ function Shop() {
     window.scrollTo(0, 0); 
   }, [currentPage]);
 
+  //function adds "amount" prop to every object in array
+  function addAmountToObjects(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) {
+      console.error("Input is not a non-empty array");
+      return arr;
+    }
+    const newArr = arr.map(obj => {
+      const newObj = { ...obj };
+      newObj.amount = 0;
+      return newObj;
+    });
+    return newArr;
+  }
 
 
   const indexOfLastPost = currentPage * postsPerPage;

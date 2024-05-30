@@ -6,11 +6,26 @@ import { useOutletContext } from 'react-router-dom';
 const Post = ({ itemsArray }) => {
   const [cartItems, setCartItems] = useOutletContext();
 
-  const addItemToCart = (item) => {
-    setCartItems(prevCartItems => {
-      const newCartItems = [...prevCartItems, item];
-      return newCartItems;
-    });
+  const addItemToCart = (item) => {    
+    let wasAddedBefore = false;   //will be true, if i add in cart item with same id
+    let newCartItems = cartItems.map(cartItem => {
+      if(cartItem.id == item.id) {
+          wasAddedBefore = true;
+          return { ...cartItem, amount: cartItem.amount + 1 };
+      } else {
+          return cartItem;
+      }
+   });
+
+   if (wasAddedBefore === true) { //if same item exist - just increase it amount
+    setCartItems(newCartItems);
+   } else {   //if not exist - create new item with amount 1
+      const newItem = { ...item, amount: 1 };
+      setCartItems(prevCartItems => {
+        const newCartItems = [...prevCartItems, newItem];
+        return newCartItems;
+      });
+   }
   };
 
   return (
@@ -18,7 +33,7 @@ const Post = ({ itemsArray }) => {
         {itemsArray.map((item) => {
             return <ShopItem key={item.id} item={item} name={item.title} image={item.image}
             category={item.category} description={item.description} price={item.price}
-            addItemToCart={addItemToCart}/>;
+            amount={item.amount} addItemToCart={addItemToCart}/>;
         })}
     </>
   );
