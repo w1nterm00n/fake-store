@@ -1,8 +1,13 @@
-# React + Vite
+This is a simple web application built using Vite + React that allows users to browse through a list of products, add them to cart, and adjust the quantity of items in the cart.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Fetches data from https://fakestoreapi.com/docs
 
-Currently, two official plugins are available:
+Components of the application:
+- ErrorElement.jsx (displayed in case of error)
+- Footer.jsx
+- Navbar.jsx
+- home page: Home.jsx (home page)
+- cart page: Cart.jsx, CartItem.jsx (item, which was added to cart)
+- shop page: Shop.jsx (whole shop page), Post.jsx (page, displayed 8 items), ShopItem.jsx (item at shop page), Pagination.jsx (a component for pagination located at the bottom of the page)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+[Live Demo](https://superlative-trifle-cb8c95.netlify.app/)
