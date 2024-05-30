@@ -21,7 +21,6 @@ function Shop() {
     .then(json=>{
       let items = addAmountToObjects(json) //add "amount" prop to every item
       setItemsArray(items);
-      console.log(items);
     })
     .catch((error) => console.error(error));
   }, []);

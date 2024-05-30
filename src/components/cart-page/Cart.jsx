@@ -9,6 +9,13 @@ function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cartItems, setCartItems] = useOutletContext();
 
+  useEffect(() => {
+    let price = 0;
+    cartItems.forEach(item => {
+      price = price + (item.price * item.amount);
+    });
+    setTotalPrice(price);
+  }, [cartItems]);
 
   return (
     

@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 
 function CartItem({ item, image, name, amount, price}) {
 
-  const [, , changeAmount] = useOutletContext();
+  const [, , changeAmount, deleteItem] = useOutletContext();
   
   return (
     <div className='CartItemWrapper'>
@@ -23,7 +23,9 @@ function CartItem({ item, image, name, amount, price}) {
 
         <span className="priceAndDeleteBtn" style={{ width: '60%' }}>
             <span style={{ fontWeight: 600 }}>{price} $</span>
-            <button className='deleteBtn'><img src={trash} alt="trash bin"/></button>
+            <button className='deleteBtn' onClick={() => deleteItem(item)}>
+              <img src={trash} alt="trash bin"/>
+            </button>
         </span>
       </div>
     </div>

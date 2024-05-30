@@ -14,7 +14,9 @@ function Navbar() {
         if (operator == "+") {
           return { ...cartItem, amount: cartItem.amount + 1 };
         } else if (operator == "-") {
-          return { ...cartItem, amount: cartItem.amount - 1 };
+          if (cartItem.amount == 0) { //to make impossible to make a negative value
+            return { ...cartItem, amount: cartItem.amount };
+          } else return { ...cartItem, amount: cartItem.amount - 1 };
         }
       } else {
           return cartItem;
@@ -23,6 +25,17 @@ function Navbar() {
    setCartItems(newCartItems);
   }
 
+  function deleteItem(item) {
+    let newCartItems = cartItems.map(cartItem => {
+      if (cartItem.id === item.id) {
+        return null; // null for item, which i'll delete
+      } else {
+        return cartItem;
+      }
+    });
+    newCartItems = newCartItems.filter(item => item !== null);
+    setCartItems(newCartItems);
+  }
 
     return (
       <>
@@ -45,7 +58,7 @@ function Navbar() {
       </div>
 
       <div>
-        <Outlet context={[cartItems, setCartItems, changeAmount]}/>
+        <Outlet context={[cartItems, setCartItems, changeAmount, deleteItem]}/>
       </div>
       </>
     )
