@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
   let randomItem = {
     name: "Item name",
     category: "cathegory",
-    description: "blah blah blah",
+    description: "no description",
     image: {storeImage},
   }
 

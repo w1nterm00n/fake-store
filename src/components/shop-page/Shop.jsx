@@ -1,6 +1,5 @@
 import Footer from '../footer/Footer'
 import Pagination from './Pagination'
-// import ShopItem from './ShopItem'
 import Post from './Post'
 import './Shop.css'
 import { useState, useEffect } from 'react';
@@ -30,6 +29,8 @@ function Shop() {
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, [currentPage]);
+
+
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
