@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import cart from '../../assets/cart.png';
 import { useState, useEffect } from 'react';
 
-function ShopItem({ item, image, name, category, description, price, isAdded, addItemToCart}) {
+function ShopItem({ item, image, name, category, description, price, amount, addItemToCart}) {
 
   const [croppedDescription, setCroppedDescription] = useState("");
   const [isLong, setIsLong] = useState(false); //true if description is longer then 25 words
-  const [isAddedToCart, setIsAdded] = useState(isAdded);
+  //const [isAddedToCart, setIsAdded] = useState(isAdded);
 
     useEffect(() => {
       function cropDescription(description) {
@@ -41,15 +41,15 @@ function ShopItem({ item, image, name, category, description, price, isAdded, ad
           <div className="itemPriceAndAmount">
               <span className="itemPrice">{price} $</span>
   
-              {isAddedToCart && (
+              {(amount > 0) && (
                   <span className='amountCounter'>
                       <button>-</button>
-                      <input className="amountCounter" type="number" name="amount" value="1" min="1" max="20" step="1"></input>
+                      <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1"></input>
                       <button>+</button>
                   </span>
                   )
               }
-              {!isAddedToCart && (
+              {(amount <= 0) && (
                   <button className='addToCart' 
                   onClick={() => addItemToCart(item)}>
                       <Link to="#!">Add to cart</Link> 
@@ -68,7 +68,7 @@ function ShopItem({ item, image, name, category, description, price, isAdded, ad
       cathegory: "no cathegory",
       description: "no description",
       price: "100",
-      isAdded: false,
+      amount: 0,
     };
   
     export default ShopItem

@@ -6,6 +6,11 @@ import { useOutletContext } from 'react-router-dom';
 const Post = ({ itemsArray }) => {
   const [cartItems, setCartItems] = useOutletContext();
 
+  const findCartItemAmount = (itemId) => {  //search for amount in cart array
+    const cartItem = cartItems.find(item => item.id === itemId);
+    return cartItem ? cartItem.amount : 0;
+  };
+
   const addItemToCart = (item) => {    
     let wasAddedBefore = false;   //will be true, if i add in cart item with same id
     let newCartItems = cartItems.map(cartItem => {
@@ -31,9 +36,18 @@ const Post = ({ itemsArray }) => {
   return (
     <>
         {itemsArray.map((item) => {
-            return <ShopItem key={item.id} item={item} name={item.title} image={item.image}
-            category={item.category} description={item.description} price={item.price}
-            amount={item.amount} addItemToCart={addItemToCart}/>;
+            const amount = findCartItemAmount(item.id); // getting actual amount for this item
+            return <ShopItem 
+                      key={item.id} 
+                      item={item} 
+                      name={item.title} 
+                      image={item.image}
+                      category={item.category} 
+                      description={item.description} 
+                      price={item.price}
+                      amount={amount} 
+                      addItemToCart={addItemToCart}
+                    />;
         })}
     </>
   );
