@@ -4,7 +4,7 @@ import { Link, Outlet } from "react-router-dom";
 import { useState } from 'react';
 
 function Navbar({page}) {
-  const [itemsAmount, setItemsAmount] = useState([0]);
+  const [cartItems, setCartItems] = useState([]);
 
     return (
       <>
@@ -19,7 +19,7 @@ function Navbar({page}) {
 
                 <li className="cardLi">
                   <Link to="/cart" className={page === "cart" ? "colouredLink" : ""}>Cart</Link>
-                  <div className="displayItemsAmount">{itemsAmount}</div> 
+                  <div className="displayItemsAmount">{cartItems.length}</div> 
                 </li>
 
             </ul>
@@ -27,7 +27,7 @@ function Navbar({page}) {
       </div>
 
       <div>
-        <Outlet context={[itemsAmount, setItemsAmount]}/>
+        <Outlet context={[cartItems, setCartItems]}/>
       </div>
       </>
     )
