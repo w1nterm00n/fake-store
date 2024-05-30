@@ -8,11 +8,11 @@ function Cart() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [cart, setCart] = useState([]);
 
-  useEffect(() => { //getting items, which added in cart, to display them
-    let cartStorage = localStorage.getItem("cart");
-    let newCart = JSON.parse(cartStorage);
-    setCart(newCart[0].items);
-  }, []);
+  // useEffect(() => { //getting items, which added in cart, to display them
+  //   let cartStorage = localStorage.getItem("cart");
+  //   let newCart = JSON.parse(cartStorage);
+  //   setCart(newCart[0].items);
+  // }, []);
 
   return (
     
@@ -24,10 +24,7 @@ function Cart() {
           <li style={{ width: '30%' }}>Price</li>
         </ul>
 
-        {cart.map((item) => {
-            return <CartItem key={item.id} name={item.title} image={item.image}
-            price={item.price} amount={0}/>;
-        })}
+        <CartItem/>
 
         <div className='priceAndCheckout'>
           <span className='totalPriceDisplay'>

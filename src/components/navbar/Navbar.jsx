@@ -1,10 +1,10 @@
 import './Navbar.css'
 import logo from '../../assets/logo_light.svg'
 import { Link, Outlet } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function Navbar({page}) {
-
+  const [itemsAmount, setItemsAmount] = useState([0]);
 
     return (
       <>
@@ -19,7 +19,7 @@ function Navbar({page}) {
 
                 <li className="cardLi">
                   <Link to="/cart" className={page === "cart" ? "colouredLink" : ""}>Cart</Link>
-                  <div className="displayItemsAmount">0</div> 
+                  <div className="displayItemsAmount">{itemsAmount}</div> 
                 </li>
 
             </ul>
@@ -27,7 +27,7 @@ function Navbar({page}) {
       </div>
 
       <div>
-        <Outlet />
+        <Outlet context={[itemsAmount, setItemsAmount]}/>
       </div>
       </>
     )
