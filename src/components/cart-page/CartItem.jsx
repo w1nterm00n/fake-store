@@ -2,7 +2,7 @@ import './CartItem.css'
 import trash from '../../assets/trash.png'
 function CartItem({ image, name, amount, price}) {
 
-
+  
   return (
     <div className='CartItemWrapper'>
         

@@ -2,17 +2,13 @@ import './Cart.css'
 import Footer from '../footer/Footer'
 import { useState, useEffect } from 'react';
 import CartItem from './CartItem'
+import { useOutletContext } from 'react-router-dom';
+
 
 function Cart() {
-
   const [totalPrice, setTotalPrice] = useState(0);
   const [cart, setCart] = useState([]);
-
-  // useEffect(() => { //getting items, which added in cart, to display them
-  //   let cartStorage = localStorage.getItem("cart");
-  //   let newCart = JSON.parse(cartStorage);
-  //   setCart(newCart[0].items);
-  // }, []);
+  const [cartItems, setCartItems] = useOutletContext();
 
   return (
     
@@ -24,7 +20,9 @@ function Cart() {
           <li style={{ width: '30%' }}>Price</li>
         </ul>
 
-        <CartItem/>
+        {cartItems.map((item) => {
+            return <CartItem key={item.id} image={item.image} name={item.title} price={item.price}/>;
+        })}
 
         <div className='priceAndCheckout'>
           <span className='totalPriceDisplay'>
