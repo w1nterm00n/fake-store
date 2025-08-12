@@ -6,7 +6,7 @@ import twitter from '../../assets/twitter.png'
 import youtube from '../../assets/youtube.png'
 import { Link } from "react-router-dom";
 
-function Footer() {
+function Footer(): JSX.Element {
 
     return (
         <div className="footerWrapper">
@@ -27,4 +27,3 @@ function Footer() {
   }
   
   export default Footer
-
