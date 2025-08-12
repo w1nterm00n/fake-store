@@ -4,21 +4,7 @@ import cartImage from '../../assets/cartImage32.png'
 import './Home.css'
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
-
-
-  type Item = {
-    title: string,
-    category: string,
-    description: string,
-    image: string
-  }
-
-  type ApiProduct = {
-    title: string;
-    category: string;
-    description: string;
-    image: string;
-  };
+import { ApiProduct, Item } from '../types';
 
   const demoItem: Item = {
     title: "Item name",

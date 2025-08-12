@@ -1,4 +1,4 @@
-import Footer from '../footer/Footer'
+import Footer from '../footer/Footer';
 import Pagination from './Pagination'
 import Post from './Post'
 import './Shop.css'
@@ -67,7 +67,7 @@ function Shop() {
 
         </div>
 
-      <Footer/>
+      <Footer />
     </>
   )
 }
