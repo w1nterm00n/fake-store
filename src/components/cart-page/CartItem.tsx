@@ -2,7 +2,15 @@ import './CartItem.css'
 import trash from '../../assets/trash.png'
 import { useOutletContext } from "react-router-dom";
 
-function CartItem({ item, image, name, amount, price}) {
+type CartItemProps = {
+  item: string, //CardItem
+  image: string,
+  name: string,
+  amount: number,
+  price: number
+}
+
+function CartItem({ item, image, name, amount, price}: CartItemProps) {
 
   const [, , changeAmount, deleteItem] = useOutletContext();
   

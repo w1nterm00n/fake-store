@@ -1,5 +1,5 @@
 
-const ErrorPage = () => {
+const ErrorPage = (): JSX.Element => {
 
 
   return (

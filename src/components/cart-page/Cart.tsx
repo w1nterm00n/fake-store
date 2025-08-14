@@ -5,13 +5,13 @@ import CartItem from './CartItem'
 import { useOutletContext } from 'react-router-dom';
 
 
-function Cart() {
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [cartItems, setCartItems] = useOutletContext();
+function Cart(): JSX.Element {
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+  const [cartItems, setCartItems] = useOutletContext(); //? how yo typify this
 
   useEffect(() => {
-    let price = 0;
-    cartItems.forEach(item => {
+    let price: number = 0;
+    cartItems.forEach(item  => {
       price = price + (item.price * item.amount);
     });
     setTotalPrice(price);
