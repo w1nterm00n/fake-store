@@ -3,16 +3,19 @@ import Footer from '../footer/Footer'
 import { useState, useEffect } from 'react';
 import CartItem from './CartItem'
 import { useOutletContext } from 'react-router-dom';
+import { CartOutletContext } from '../types';
 
 
 function Cart(): JSX.Element {
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [cartItems, setCartItems] = useOutletContext(); //? how yo typify this
+  const [cartItems, setCartItems] = useOutletContext<CartOutletContext>();
+
+
 
   useEffect(() => {
     let price: number = 0;
     cartItems.forEach(item  => {
-      price = price + (item.price * item.amount);
+      price = price + (item.price * (item.amount ?? 0));
     });
     setTotalPrice(price);
   }, [cartItems]);
@@ -28,7 +31,7 @@ function Cart(): JSX.Element {
         </ul>
 
         {cartItems.map((item) => {
-            return <CartItem key={item.id} item={item} image={item.image} name={item.title} amount={item.amount} price={item.price}/>;
+            return <CartItem key={item.id} item={item} image={item.image} name={item.title} amount={item.amount ?? 0} price={item.price}/>;
         })}
 
         <div className='priceAndCheckout'>

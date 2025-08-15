@@ -3,14 +3,14 @@ import logo from '../../assets/logo_light.svg'
 import { Link, Outlet } from "react-router-dom";
 import { useState } from 'react';
 import { useLocation } from "react-router-dom";
-import { CardItem, Operator } from '../types';
+import { CartItem, Operator } from '../types';
 
 function Navbar(): JSX.Element {
-  const [cartItems, setCartItems] = useState<CardItem[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const location = useLocation();
 
-  function changeAmount (item: CardItem, operator: Operator) {  //when user pressing + or - buttons to increment/decrement
-    const newCartItems: CardItem[] = cartItems.map(cartItem => {
+  function changeAmount (item: CartItem, operator: Operator) {  //when user pressing + or - buttons to increment/decrement
+    const newCartItems: CartItem[] = cartItems.map(cartItem => {
       if(cartItem.id === item.id) {
         if (operator === "+") {
           return { ...cartItem, amount: cartItem.amount ? cartItem.amount + 1 : 1 };
@@ -24,7 +24,7 @@ function Navbar(): JSX.Element {
   }
 
 
-  function deleteItem(item: CardItem) {
+  function deleteItem(item: CartItem) {
       setCartItems(prev => prev.filter(ci => ci.id !== item.id));
   }
 
@@ -50,6 +50,7 @@ function Navbar(): JSX.Element {
 
       <div>
         <Outlet context={[cartItems, setCartItems, changeAmount, deleteItem]}/>
+        {/* useOutletContext — это хук из react-router-dom, который позволяет достать данные, переданные родительским <Outlet> из маршрутов. */}
       </div>
       </>
     )

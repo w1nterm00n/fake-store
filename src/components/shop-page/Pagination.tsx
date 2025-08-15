@@ -1,5 +1,11 @@
+type PaginationProps = {
+  postsPerPage: number,
+  length: number,
+  handlePagination: (pageNumber: number) => void,
+  currentPage: number
+}
 
-const Pagination = ({ postsPerPage, length, handlePagination, currentPage }) => {
+const Pagination = ({ postsPerPage, length, handlePagination, currentPage }: PaginationProps) => {
   const paginationNumbers = [];
 
   for (let i = 1; i <= Math.ceil(length / postsPerPage); i++) {

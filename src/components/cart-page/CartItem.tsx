@@ -1,9 +1,10 @@
 import './CartItem.css'
 import trash from '../../assets/trash.png'
 import { useOutletContext } from "react-router-dom";
+import type { CartItem, CartOutletContext } from '../types';
 
 type CartItemProps = {
-  item: string, //CardItem
+  item: CartItem,
   image: string,
   name: string,
   amount: number,
@@ -12,7 +13,7 @@ type CartItemProps = {
 
 function CartItem({ item, image, name, amount, price}: CartItemProps) {
 
-  const [, , changeAmount, deleteItem] = useOutletContext();
+  const [, , changeAmount, deleteItem] = useOutletContext<CartOutletContext>();
   
   return (
     <div className='CartItemWrapper'>
@@ -24,14 +25,14 @@ function CartItem({ item, image, name, amount, price}: CartItemProps) {
 
       <div className='itemControl' style={{ width: '50%' }}>
         <span className='amountCounter' style={{ width: '40%' }}>
-            <button onClick={() => changeAmount(item, "-")}>-</button>
+            <button onClick={() => changeAmount(item.id, "-")}>-</button>
             <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1" readOnly></input>
-            <button onClick={() => changeAmount(item, "+")}>+</button>
+            <button onClick={() => changeAmount(item.id, "+")}>+</button>
         </span>
 
         <span className="priceAndDeleteBtn" style={{ width: '60%' }}>
             <span style={{ fontWeight: 600 }}>{price} $</span>
-            <button className='deleteBtn' onClick={() => deleteItem(item)}>
+            <button className='deleteBtn' onClick={() => deleteItem(item.id)}>
               <img src={trash} alt="trash bin"/>
             </button>
         </span>
@@ -39,12 +40,5 @@ function CartItem({ item, image, name, amount, price}: CartItemProps) {
     </div>
   )
 }
-
-CartItem.defaultProps = {  //значения по дефолту (не применяются)
-  image: "https://www.scotsman.com/webimg/b25lY21zOjJiN2Q1NjhlLWI5ZDMtNGM2ZS1iOTFjLTNkYjcwOTE3OGI0NzplNWFkZDUxYy0yZjNiLTRiM2QtOTRjMC04YjllN2VhY2U3Mzg=.jpg?crop=3:2,smart&width=640&quality=65&enable=upscale",
-  name: "no name",
-  amount: 0,
-  price: 0,
-};
 
 export default CartItem

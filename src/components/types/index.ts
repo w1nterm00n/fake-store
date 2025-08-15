@@ -13,9 +13,18 @@ export type ApiProduct = {
   };
 
 
-export type CardItem = Item & {
+export type CartItem = Item & {
   id: number,
-  amount: number,
+  amount?: number,
+  price: number
 }
+
+export type CartOutletContext = [
+  CartItem[],
+  React.Dispatch<React.SetStateAction<CartItem[]>>,
+  ChangeAmountFn: (id: number, operator: Operator) => void,
+  DeleteItemFn: (id: number) => void
+];
+
 
 export type Operator = "+" | "-"
