@@ -6,10 +6,11 @@ import { CartItem, CartOutletContext } from '../types';
 
 type ShopItemProps = {
   item: CartItem,
+  amount: number,
   addItemToCart: (item: CartItem) => void
 }
 
-function ShopItem({ item, addItemToCart }: ShopItemProps) {
+function ShopItem({ item, amount, addItemToCart }: ShopItemProps) {
 
   const [, , changeAmount] = useOutletContext<CartOutletContext>();
   const [croppedDescription, setCroppedDescription] = useState("");
@@ -27,14 +28,14 @@ function ShopItem({ item, addItemToCart }: ShopItemProps) {
       }
       cropDescription(item.description);
     }, [item.description]);
-  
-  
+
       return (
         <div className="shopItemWrapper">
           <img className="itemImage" src={item.image} alt="" />
           <p className='itemName'>{item.title}</p>
           <span className='itemCathegory'>{item.category}</span>
-          {isLong && (
+          {
+          isLong && (
               <>
                 <a href='#!' className='itemDescription'>{croppedDescription}</a>
               </>
@@ -47,15 +48,15 @@ function ShopItem({ item, addItemToCart }: ShopItemProps) {
           <div className="itemPriceAndAmount">
               <span className="itemPrice">{item.price} $</span>
   
-              {(item.amount && item.amount > 0) && (
+              {(amount > 0) && (
                   <span className='amountCounter'>
                       <button onClick={() => changeAmount(item.id, "-")}>-</button>
-                      <input className="amountCounter" type="number" name="amount" value={item.amount} min="1" max="20" step="1" readOnly></input>
+                      <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1" readOnly></input>
                       <button onClick={() => changeAmount(item.id, "+")}>+</button>
                   </span>
                   )
               }
-              {(item.amount && item.amount <= 0) && (
+              {(amount <= 0) && (
                   <button className='addToCart' 
                   onClick={() => addItemToCart(item)}>
                       <Link to="#!">Add to cart</Link> 

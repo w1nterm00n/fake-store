@@ -9,12 +9,16 @@ function Navbar(): JSX.Element {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const location = useLocation();
 
-  function changeAmount (item: CartItem, operator: Operator) {  //when user pressing + or - buttons to increment/decrement
+  function changeAmount (itemId: number, operator: Operator) {  //when user pressing + or - buttons to increment/decrement
+    console.log("change anount", itemId); //вместо item передается его id
     const newCartItems: CartItem[] = cartItems.map(cartItem => {
-      if(cartItem.id === item.id) {
+      if(cartItem.id === itemId) {
+        console.log("change: ", cartItem.id);
         if (operator === "+") {
+          console.log("+");
           return { ...cartItem, amount: cartItem.amount ? cartItem.amount + 1 : 1 };
         } else if (operator === "-") {
+          console.log("-");
           return { ...cartItem, amount: cartItem.amount ? cartItem.amount - 1 : 0 };
         }
       } 
@@ -24,8 +28,8 @@ function Navbar(): JSX.Element {
   }
 
 
-  function deleteItem(item: CartItem) {
-      setCartItems(prev => prev.filter(ci => ci.id !== item.id));
+  function deleteItem(itemId: number) {
+      setCartItems(prev => prev.filter(ci => ci.id !== itemId));
   }
 
     return (

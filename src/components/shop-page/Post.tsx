@@ -16,6 +16,7 @@ const Post = ({ itemsArray }: PostProps) => {
 
   const addItemToCart = (item: CartItem) => {    
     let wasAddedBefore = false;   //will be true, if i add in cart item with same id
+    console.log("was added to cart: ", item);
     let newCartItems = cartItems.map(cartItem => {
       if(cartItem.id == item.id) {
           wasAddedBefore = true;
@@ -43,6 +44,7 @@ const Post = ({ itemsArray }: PostProps) => {
             return <ShopItem 
                       item={item}
                       key={item.id} 
+                      amount={amount}
                       addItemToCart={addItemToCart}
                     />;
         })}
