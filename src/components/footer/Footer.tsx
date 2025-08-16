@@ -1,6 +1,7 @@
 import './Footer.css'
 import logo from '../../assets/logo_dark.svg'
 import facebook from '../../assets/facebook.png'
+import typescript from '../../assets/ts_logo.png'
 import instagram from '../../assets/instagram.png'
 import twitter from '../../assets/twitter.png'
 import youtube from '../../assets/youtube.png'
@@ -16,6 +17,7 @@ function Footer(): JSX.Element {
                 </Link>
                 <div className="footerLine"></div>
                 <ul className='footerMenu'>
+                    <li><a href="#!"><img src={typescript} alt="typescript" width={"24px"}/></a></li>
                     <li><a href="#!"><img src={facebook} alt="facebook"/></a></li>
                     <li><a href="#!"><img src={instagram} alt="instagram"/></a></li>
                     <li><a href="#!"><img src={twitter} alt="twitter"/></a></li>
