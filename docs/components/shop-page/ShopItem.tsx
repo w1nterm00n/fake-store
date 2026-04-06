@@ -2,16 +2,23 @@ import './ShopItem.css'
 import { Link, useOutletContext } from "react-router-dom";
 import cart from '../../assets/cart.png';
 import { useState, useEffect } from 'react';
+import { CartItem, CartOutletContext } from '../types';
 
-function ShopItem({ item, image, name, category, description, price, amount, addItemToCart}) {
+type ShopItemProps = {
+  item: CartItem,
+  amount: number,
+  addItemToCart: (item: CartItem) => void
+}
 
-  const [, , changeAmount] = useOutletContext();
+function ShopItem({ item, amount, addItemToCart }: ShopItemProps) {
+
+  const [, , changeAmount] = useOutletContext<CartOutletContext>();
   const [croppedDescription, setCroppedDescription] = useState("");
   const [isLong, setIsLong] = useState(false); //true if description is longer then 25 words
   //const [isAddedToCart, setIsAdded] = useState(isAdded);
 
     useEffect(() => {
-      function cropDescription(description) {
+      function cropDescription(description: string) {
         const wordsArr = description.trim().split(/\s+/);
         if (wordsArr.length > 25) {
           let str = wordsArr.slice(0, 25).join(' ');
@@ -19,33 +26,33 @@ function ShopItem({ item, image, name, category, description, price, amount, add
           setIsLong(true);
         } 
       }
-      cropDescription(description);
-    }, [description]);
-  
-  
+      cropDescription(item.description);
+    }, [item.description]);
+
       return (
         <div className="shopItemWrapper">
-          <img className="itemImage" src={image} alt="" />
-          <p className='itemName'>{name}</p>
-          <span className='itemCathegory'>{category}</span>
-          {isLong && (
+          <img className="itemImage" src={item.image} alt="" />
+          <p className='itemName'>{item.title}</p>
+          <span className='itemCathegory'>{item.category}</span>
+          {
+          isLong && (
               <>
                 <a href='#!' className='itemDescription'>{croppedDescription}</a>
               </>
             )
           }
           {!isLong && (
-              <a href='#!' className='itemDescription'>{description}</a>
+              <a href='#!' className='itemDescription'>{item.description}</a>
             )
           }
           <div className="itemPriceAndAmount">
-              <span className="itemPrice">{price} $</span>
+              <span className="itemPrice">{item.price} $</span>
   
               {(amount > 0) && (
                   <span className='amountCounter'>
-                      <button onClick={() => changeAmount(item, "-")}>-</button>
+                      <button onClick={() => changeAmount(item.id, "-")}>-</button>
                       <input className="amountCounter" type="number" name="amount" value={amount} min="1" max="20" step="1" readOnly></input>
-                      <button onClick={() => changeAmount(item, "+")}>+</button>
+                      <button onClick={() => changeAmount(item.id, "+")}>+</button>
                   </span>
                   )
               }

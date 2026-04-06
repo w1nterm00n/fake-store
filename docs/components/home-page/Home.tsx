@@ -4,38 +4,47 @@ import cartImage from '../../assets/cartImage32.png'
 import './Home.css'
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import { ApiProduct, Item } from '../types';
 
-
-
-  let randomItem = {
-    name: "Item name",
-    category: "cathegory",
+  const demoItem: Item = {
+    title: "Item name",
+    category: "category",
     description: "no description",
-    image: {storeImage},
+    image: storeImage,
   }
 
+  //mapper
+  const toItem = (p: ApiProduct): Item => ({
+      title: p.title || "Unnamed",
+      category: p.category || "unknown",
+      description: p.description || "no description",
+      image: p.image || storeImage,
+  });
+  
 
-function Home() {
-  const [item, setItem] = useState(randomItem);
+function Home(): JSX.Element {
+  const [item, setItem] = useState<Item>(demoItem);
 
   //fetching item for featuredProduct section
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/13", {
     mode: "cors",
   })
-    .then((response) => response.json())
-    .then(json=>{
-      console.log(json);
-      let newItem = {
-        name: json.title,
-        category: json.category,
-        description: json.description,
-        image: json.image,
-      }
-      setItem(newItem);
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json() as Promise<ApiProduct>
     })
-    .catch((error) => console.error(error));
+    .then(json=>{ 
+      const mapped = toItem(json)
+      setItem(mapped);
+    })
+    .catch((error: unknown) => {
+      if (error instanceof Error) console.error(error.message);
+      else console.error(error);
+    });
   }, []);
+
+
 
   return (
     <>
@@ -48,9 +57,7 @@ function Home() {
               items designed to fit your 
               everyday needs without compromising on  quality or style.
             </p>
-            <button className='blueButton'>
-              <Link to="/shop">Shop</Link>
-            </button>
+              <Link className='blueButton' to="/shop">Shop</Link>
           </div>
 
           <div className='imageWrapper'>
@@ -82,14 +89,14 @@ function Home() {
       <div className='pageWrapper'>
         <section className='featuredProduct'>
           <div className='featuredProductContent'>
-            <h4 className='outline'>{item.name}</h4>
-            <p className='cathegory'>{item.category}</p>
+            <h4 className='outline'>{item.title}</h4>
+            <p className='category'>{item.category}</p>
             <p className='description'>{item.description}</p>
           </div>
 
 
           <div className='imageWrapper'>
-            <img src={item.image} alt="item image" />
+            <img src={item.image || storeImage} alt="item image" />
           </div>
         </section>
       </div>
